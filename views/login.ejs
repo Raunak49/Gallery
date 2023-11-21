@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gallery</title>
+	<link rel="stylesheet" type="text/css" href="/login.css">
+</head>
+<h2>Gallery</h2>
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form action="#">
+			<h1>Create Account</h1>
+			<div class="social-container">
+				<a href="/google" class="social"><i class="fab fa-google-plus-g"><svg xmlns="http://www.w3.org/2000/svg" height="0.75em" viewBox="0 0 488 512"><path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"/></svg></i></a>
+			</div>
+			<span>or use your email for registration</span>
+			<input type="text" placeholder="Name" id="name" />
+			<input type="email" placeholder="Email" id="email" />
+			<input type="password" placeholder="Password" id="password" />
+			<button type="submit" id="signup">Sign Up</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form action="#">
+			<h1>Sign in</h1>
+			<div class="social-container">
+				<a href="/google" class="social"><i class="fab fa-google-plus-g"><svg xmlns="http://www.w3.org/2000/svg" height="0.75em" viewBox="0 0 488 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"/></svg></i></a>
+			</div>
+			<span>or use your account</span>
+			<input type="email" placeholder="Email" id="email1"/>
+			<input type="password" placeholder="Password" id="password1"/>
+			<button id="signIn">Sign In</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>To keep connected with us please login with your personal info</p>
+				<button class="ghost" id="signIn">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Friend!</h1>
+				<p>Enter your personal details and start journey with us</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	const signUpButton = document.getElementById('signUp');
+	const signInButton = document.getElementById('signIn');
+	const container = document.getElementById('container');
+
+	signUpButton.addEventListener('click', () => {
+		container.classList.add("right-panel-active");
+	});
+
+	signInButton.addEventListener('click', () => {
+		container.classList.remove("right-panel-active");
+	});
+
+	const signupForm = document.getElementById('signup');
+	signupForm.addEventListener('click', (event) => {
+		event.preventDefault();
+		const name = document.getElementById('name').value;
+		const email = document.getElementById('email').value;
+		const password = document.getElementById('password').value;
+
+		fetch('/signup', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ name, email, password })
+		})
+			.then(response => response.json())
+			.then(data => {
+				console.log(data);
+				localStorage.setItem('token', data.token);
+				window.location.href = `/gallery/${data.token}`;
+			})
+			.catch(error => {
+				console.error(error);
+			});
+	});
+
+	const signInForm = document.getElementById('signIn');
+	signInForm.addEventListener('click', (event) => {
+		event.preventDefault();
+		const email = document.getElementById('email1').value;
+		const password = document.getElementById('password1').value;
+
+		fetch('/login', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ email, password })
+		})
+			.then(response => response.json())
+			.then(data => {
+				console.log(data);
+				localStorage.setItem('token', data.token);
+				window.location.href = `/gallery/${data.token}`;
+			})
+			.catch(error => {
+				console.error(error);
+			});
+	});
+</script>
+</html>

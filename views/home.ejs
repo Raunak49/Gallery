@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="/home.css">
+</head>
+<body>
+    <article>
+        <nav>
+            <ul>
+                <a href="/login">Sign up</a>
+                <a href="/login">Log in</a>
+                <a href="/" id="left">Home</a>
+            </ul>
+        </nav>
+        <h1 class="fade-in">Capture great moments</h1>
+        <div id="content" class="fade-in-2">
+            <ul type="none">
+                <li><a href="#" id="gallery-link">All Photos</a></li>
+            </ul>
+        </div>
+        <div class="footer">
+            <p>Gallery ©</p>
+        </div>
+    </article>
+</body>
+<script>
+    const galleryLink = document.getElementById("gallery-link");
+    galleryLink.addEventListener("click", () => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            window.location.href = `/gallery/${token}`;
+        } else {
+            window.location.href = "/login";
+        }
+    });
+</script>
+</html>

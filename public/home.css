@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Raleway:wght@100&family=Recursive:wght@300&family=Righteous&family=Roboto:wght@100&family=Young+Serif&display=swap');
+body{
+    font-family: 'Great Vibes', cursive;
+    font-family: 'Raleway', sans-serif;
+    font-family: 'Recursive', sans-serif;
+    font-family: 'Righteous', cursive;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Young Serif', serif;
+
+    background: url('https://i.pinimg.com/originals/1e/27/03/1e2703bcca812b73696c5a948120f33d.jpg') no-repeat, center center;
+    background-color: rgba(255, 255, 255,0.5);
+    background-size: fit-content;
+    background-position-x: 90%;
+    background-position-y:15%;
+}   
+h1{
+    position: absolute;
+    left:50px;
+    top:10px;
+    word-spacing: -5px;
+    font-size: 60px;
+    text-shadow: 1px 1px 1px lightblue;
+}
+nav{
+    overflow: hidden;
+
+    /* color:rgb(234, 153, 95); */
+    color: rgb(204, 153, 102);
+    text-shadow: 0.5px 0.5px 0.5px black;
+}
+nav ul{
+    margin:0;
+    padding: 0;
+}
+nav a{
+    float: right;
+    text-align: center;
+    padding: 7px;
+    text-decoration: none;
+    
+    color: inherit;
+}
+#left{
+    float:left;
+}
+nav a:hover{
+
+    color:pink;
+}
+li a{
+    display: block;
+
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+
+    border: solid black;
+
+    padding: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 50px;
+    margin-bottom: -20px;
+
+    box-shadow: 1px 1px 1px black;
+}
+li a:hover{
+    background-color: black;
+    color:pink;
+    box-shadow: 2px 2px 1px black;
+}
+#content{
+    position: fixed;
+    left:10px;
+    top:150px;
+    padding-top: 100px;
+}
+.fade-in {
+	opacity: 1;
+    /* color: rgb(107, 103, 95);
+     */
+    color: rgb(204, 153, 102);
+    text-shadow: 0.5px 0.5px 0.5px black;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 2s;
+}
+.fade-in-2{
+    opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+    /* color:rgb(245, 135, 57);   
+     */
+     color: rgb(218, 125, 32);
+	animation-timing-function: ease-in;
+	animation-duration: 3s;
+}
+.footer{
+    position: fixed;
+    bottom: 0;
+    padding-left: 10px;
+    color: rgb(204, 153, 102);
+    font-size: 17px;
+    text-shadow: 0.5px 0.5px 0.5px black;
+}
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
